@@ -23,52 +23,60 @@
 
   <body>
     <div class="container mt-5">
-      <div class="card">
-        <div class="card-header">
-          <h2>Payment Form Example</h2>
-        </div>
-        <div class="card-body">
-          <div class="row">
-            <div class="col-12">
-              <div class="alert alert-danger d-none" role="alert">
-                Some fields are missing
+      <form id="formularioDatosDePago">
+        <div class="card">
+          <div class="card-header">
+            <h2>Payment Form Example</h2>
+          </div>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-12">
+                <div class="alert alert-danger d-none" role="alert">
+                  Some fields are missing
+                </div>
               </div>
             </div>
-          </div>
 
-          <form>
             <div class="row">
               <div class="col-12 col-sm-12 col-md-5">
                 <div class="form-group">
                   <label class="form-label">Card #</label>
                   <input
-                    type="email"
+                    type="text"
                     class="form-control"
                     placeholder="XXXXXXXXXXXXXXXXXX"
                     id="card"
+                    name="card"
                   />
+                  <div class="invalid-feedback" id="error_card">
+                    Error número de tarjeta inválida
+                  </div>
                 </div>
               </div>
               <div class="col-12 col-sm-6 col-md-3">
                 <div class="form-group">
                   <label class="form-label">CVC #</label>
                   <input
-                    type="number"
+                    type="text"
                     class="form-control"
-                    placeholder="0000"
-                    id="valor-cvc"
+                    placeholder="000"
+                    id="valorCvc"
+                    name="valorCvc"
                   />
+                  <div class="invalid-feedback" id="error_valorCvc"></div>
                 </div>
               </div>
               <div class="col-12 col-sm-6 col-md-4">
                 <div class="form-group">
                   <label class="form-label">Amount</label>
                   <input
-                    type="number"
+                    type="text"
                     class="form-control"
                     placeholder="Amount"
-                    id="amount-valor"
+                    id="amountValor"
+                    name="amountValor"
                   />
+                  <div class="invalid-feedback" id="error_amount"></div>
                 </div>
               </div>
               <div class="col-12 col-md-6">
@@ -77,20 +85,34 @@
                   <input
                     type="text"
                     class="form-control"
-                    id="firstname-valor"
+                    id="firstnameValor"
+                    name="firstnameValor"
                   />
+                  <div class="invalid-feedback" id="inserteNombre"></div>
                 </div>
               </div>
               <div class="col-12 col-md-6">
                 <div class="form-group">
                   <label class="form-label">Last name</label>
-                  <input type="text" class="form-control" id="lastname-valor" />
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="lastApellidoValor"
+                    name="lastApellidoValor"
+                  />
+                  <div class="invalid-feedback" id="inserteApellido"></div>
                 </div>
               </div>
               <div class="col-12 col-md-6">
                 <div class="form-group">
                   <label class="form-label">City</label>
-                  <input type="text" class="form-control" id="city-valor" />
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="cityValor"
+                    name="cityValor"
+                  />
+                  <div class="invalid-feedback" id="city"></div>
                 </div>
               </div>
               <div class="col-12 col-md-3">
@@ -100,6 +122,7 @@
                     class="form-control"
                     aria-label="Default select example"
                     id="state-valor"
+                    name="state-valor"
                   >
                     <option selected>Pick a state</option>
                     <option value="1">One</option>
@@ -115,6 +138,7 @@
                     type="text"
                     class="form-control"
                     id="postalcode-valor"
+                    name="postalcode-valor"
                   />
                 </div>
               </div>
@@ -193,6 +217,7 @@
                   <textarea
                     class="form-control"
                     id="exampleFormControlTextarea1"
+                    name="exampleFormControlTextarea1"
                     rows="3"
                   ></textarea>
                   <small
@@ -203,74 +228,14 @@
                 </div>
               </div>
             </div>
-          </form>
+          </div>
+          <div class="card-footer text-right">
+            <a href="#" class="btn btn-secondary">Cancel</a>
+            <button type="submit" class="btn btn-primary">Send</button>
+          </div>
         </div>
-        <div class="card-footer text-right">
-          <a href="#" class="btn btn-secondary">Cancel</a>
-          <a href="#" class="btn btn-primary" id="envioformulario">Send</a>
-        </div>
-      </div>
+      </form>
     </div>
-
-    <script type="text/javascript">
-      const envioformulario = document.getElementById("envioformulario");
-
-      envioformulario.addEventListener("click", function (e) {
-        e.preventDefault();
-
-        let card = document.getElementById("card").value;
-        if (card == "") {
-          document.getElementById("card").classList.add("bg-danger");
-        }
-
-        let codigo = document.getElementById("valor-cvc").value;
-        if (codigo == "") {
-          document.getElementById("valor-cvc").classList.add("bg-danger");
-        }
-
-        let amount = document.getElementById("amount-valor").value;
-        if (amount == "") {
-          document.getElementById("amount-valor").classList.add("bg-danger");
-        }
-
-        let firstname = document.getElementById("firstname-valor").value;
-        if (firstname == "") {
-          document.getElementById("firstname-valor").classList.add("bg-danger");
-        }
-
-        let lastname = document.getElementById("lastname-valor").value;
-        if (lastname == "") {
-          document.getElementById("lastname-valor").classList.add("bg-danger");
-        }
-
-        let city = document.getElementById("city-valor").value;
-        if (city == "") {
-          document.getElementById("city-valor").classList.add("bg-danger");
-        }
-
-        let state = document.getElementById("state-valor").value;
-        if (state == "Pick a state") {
-          document.getElementById("state-valor").classList.add("bg-danger");
-        }
-
-        let postalcode = document.getElementById("postalcode-valor").value;
-        if (postalcode == "") {
-          document
-            .getElementById("postalcode-valor")
-            .classList.add("bg-danger");
-        }
-
-        let message = document.getElementById("exampleFormControlTextarea1")
-          .value;
-        if (message == "") {
-          document
-            .getElementById("exampleFormControlTextarea1")
-            .classList.add("bg-danger");
-        }
-
-        var alerta = document.getElementsByClassName("d-none")[0];
-        alerta.classList.add("d-block");
-      });
-    </script>
+    <script src="validacion.js"></script>
   </body>
 </html>
