@@ -58,6 +58,34 @@ form.addEventListener("submit", function (e) {
     form.cityValor.classList.remove("is-invalid");
   }
 
+  // State
+
+  if (!onlyText.test(form.cityValor.value)) {
+    form.cityValor.classList.add("is-invalid");
+    document.getElementById("city").innerHTML = "Inserte una ciudad válida";
+  } else {
+    form.cityValor.classList.remove("is-invalid");
+  }
+
+  //postal code
+
+  if (!expresionRegularValores.test(form.postalCodeValor.value)) {
+    form.postalCodeValor.classList.add("is-invalid");
+    document.getElementById("postalCode").innerHTML =
+      "Ingresa un código postal válido";
+  } else {
+    form.postalCodeValor.classList.remove("is-invalid");
+  }
+
+  //Message
+
+  if (!onlyText.test(form.exampleFormControlTextarea1.value)) {
+    form.exampleFormControlTextarea1.classList.add("is-invalid");
+    document.getElementById("Message").innerHTML = "Haz un comentario";
+  } else {
+    form.exampleFormControlTextarea1.classList.classList.remove("is-invalid");
+  }
+
   var alerta = document.getElementsByClassName("d-none")[0];
   alerta.classList.add("d-block");
 });
