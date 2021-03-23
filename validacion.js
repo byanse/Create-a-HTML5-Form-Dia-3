@@ -60,13 +60,6 @@ form.addEventListener("submit", function (e) {
 
   // State
 
-  if (!onlyText.test(form.cityValor.value)) {
-    form.cityValor.classList.add("is-invalid");
-    document.getElementById("city").innerHTML = "Inserte una ciudad válida";
-  } else {
-    form.cityValor.classList.remove("is-invalid");
-  }
-
   //postal code
 
   if (!expresionRegularValores.test(form.postalCodeValor.value)) {
@@ -77,13 +70,21 @@ form.addEventListener("submit", function (e) {
     form.postalCodeValor.classList.remove("is-invalid");
   }
 
-  //Message
+  //We accept
 
-  if (!onlyText.test(form.exampleFormControlTextarea1.value)) {
+  //Message
+  if (form.exampleFormControlTextarea1.value === "") {
     form.exampleFormControlTextarea1.classList.add("is-invalid");
     document.getElementById("Message").innerHTML = "Haz un comentario";
   } else {
-    form.exampleFormControlTextarea1.classList.classList.remove("is-invalid");
+    form.exampleFormControlTextarea1.classList.remove("is-invalid");
+  }
+
+  if (form.stateValor.value === "Pick a state") {
+    form.stateValor.classList.add("is-invalid");
+    document.getElementById("PickAState").innerHTML = "selecciona opción";
+  } else {
+    form.stateValor.classList.remove("is-invalid");
   }
 
   var alerta = document.getElementsByClassName("d-none")[0];
